@@ -6,8 +6,6 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
-#docker db-data
-.db-data
 
 # OS
 .DS_Store
