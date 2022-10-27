@@ -1,9 +1,21 @@
-import {Injectable} from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  UnauthorizedException,
+} from '@nestjs/common';
+import { EmployeesService } from '../employees/employees.service';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class AuthService {
+  constructor(private employeeService: EmployeesService) {}
 
-    singin(){return 'I have signed in'}
+  async validateEmployeeCred(email: string, password: string): Promise<any> {
+    const employee = await this.employeeService.findByEmail(email);
+    if (!employee) throw new BadRequestException();
 
-    singup(){return 'I have signed up'}
+    if (!(await bcrypt.compare(password, employee.password)))
+      throw new UnauthorizedException();
+    return employee;
+  }
 }

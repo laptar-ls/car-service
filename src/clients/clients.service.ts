@@ -16,7 +16,7 @@ export class ClientsService {
     return await this.clientRepository.save(createClientDto);
   }
 
-  async findAll() {
+  async findAll(): Promise<Clients[]> {
     return await this.clientRepository.find({
       relations: ['cars'],
     });
