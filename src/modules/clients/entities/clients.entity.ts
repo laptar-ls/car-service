@@ -1,4 +1,5 @@
 import {
+  BaseEntity,
   Column,
   CreateDateColumn,
   Entity,
@@ -8,7 +9,7 @@ import {
 import { Cars } from '../../cars/entities/cars.entity';
 
 @Entity('clients')
-export class Clients {
+export class Clients extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 

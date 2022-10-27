@@ -4,7 +4,6 @@ import { CarsController } from './cars.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Cars } from './entities/cars.entity';
 import { Clients } from '../clients/entities/clients.entity';
-import { ClientsService } from '../clients/clients.service';
 import { ClientsModule } from '../clients/clients.module';
 
 @Module({

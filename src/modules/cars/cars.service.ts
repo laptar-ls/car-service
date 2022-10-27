@@ -11,14 +11,12 @@ export class CarsService {
   constructor(
     @InjectRepository(Cars)
     private readonly carRepository: Repository<Cars>,
-    @InjectRepository(Clients)
-    private clientRepository: Repository<Clients>,
   ) {}
 
   async create(createCarDto: CreateCarDto, owner: Clients) {
     const newCar = await this.carRepository.save(createCarDto);
     owner.cars = [newCar, ...owner.cars];
-    await this.clientRepository.save(owner);
+    owner.save();
     return newCar;
   }
 
