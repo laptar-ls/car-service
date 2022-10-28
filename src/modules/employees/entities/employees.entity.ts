@@ -8,6 +8,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import * as bcrypt from 'bcrypt';
+import { RoleEnum } from './role.enum';
 
 @Entity('employees')
 export class Employees extends BaseEntity {
@@ -31,6 +32,9 @@ export class Employees extends BaseEntity {
 
   @Column()
   lastName: string;
+
+  @Column('enum', { enum: RoleEnum })
+  role2: string;
 
   @BeforeInsert()
   async setPassword(password: string) {
